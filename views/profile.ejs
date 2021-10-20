@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Manifestation Application</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="user.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/8ea013bdc7.js" crossorigin="anonymous"></script>
+  
+
+</head>
+
+<body>
+    <div class="container">
+      <div class="bannerContent">
+        <img src="banner2.png" alt="graphic that reads plant your seeds" class="imgBanner">
+      </div>
+
+
+    <div>
+      <div class="well">
+          <h3 id="profile"> Profile</h3>
+            <form action="/imageUpload" method="POST" enctype="multipart/form-data">
+              <% if(user.img.data){ %>
+                <img src="data:image/<%=user.img.contentType%>;base64,
+                <%=user.img.data.toString('base64')%>" class="profileImg">
+              <% } %>
+                  
+            <div>
+              <input type="file" id="image" name="image" value="" required>
+            </div>
+                  <button type="submit">UPLOAD</button>
+            </form>
+
+
+              <% if (user.local.email) { %>
+            <p>
+              <strong>id</strong>: <%= user._id %><br>
+              <strong>email</strong>: <%= user.local.email %><br>
+              <strong>password</strong>: <%= user.local.password %>
+            </p>
+
+      </div>
+
+    <div class="manifesting">
+   <h2 id="deserve">things flow to me</h2>
+      <% if (user.local.email) { %>
+        <form action="/messages" method="POST">
+          <input type="month" placeholder="date" name="date" class="inputMan"  value="2021-10"required>
+          <input type="text" value="<%= user.local.email %>" name="name" class="inputMan" required>
+          <input type="text" placeholder="message" name="msg" class="inputMan" required>
+          
+          <button type="submit">Submit</button>
+        </form>
+    <% } %>
+
+
+    
+
+    <ul class="messages">
+      <% for(var i=0; i<messages.length; i++) {%>
+        <li class="message">
+          <span><%= messages[i].date %></span>
+          <span><%= messages[i].name %></span>
+          <span><%= messages[i].msg %></span>
+          <span><%= messages[i].like %></span>
+          <span class="hide"><%= messages[i]._id %></span>
+
+          <% if(messages[i].like> 0){ %>
+            <span><i class="fas fa-heart liked" aria-hidden="true"></i></span>
+            <%} else {%>
+              <span><i class="far fa-heart liked" aria-hidden="true"></i></span>
+              <%}%>
+
+                <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+        </li>
+        <% } %>
+    </ul>
+  
+  </div>
+
+  <div class="allManifestations">
+    <a href="/allmanifestations" class="btn btn-default btn-sm">What other's are manifesting...</a>
+   </div>
+  
+   <div class="page-header text-center">
+
+    <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+
+    <a href="/unlink/local" class="btn btn-default">Unlink</a>
+    <% } else { %>
+    <a href="/connect/local" class="btn btn-default">Connect Local</a>
+    <% } %>
+  </div>
+
+  <script src="main.js"></script>
+
+</body>
+
+</html>

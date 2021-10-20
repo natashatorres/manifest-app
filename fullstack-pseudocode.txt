@@ -1,0 +1,46 @@
+// PSEUDO CODE
+// - wire framing —> 
+// how I want the app to look, 
+
+plant your seeds - a manifestation forum application
+
+
+// what I want it to do / how users will interact
+allow users to sign up and create an account/log-in
+allow users to go to a user page add a profile image
+allow user to add manifestations to forum
+  
+
+
+// properties to send to post method
+what herbs the user clicks on 
+
+
+// - run server 
+// - create new collection in MongoDB --> change collection names in code (db.collection('<collectionName>'))
+// - check connection to my server 
+
+// - set up front end (inputs, where I want things to be positioned (affects childnodes))
+
+//routes
+// - GET —> how many pages in my app? how many collections? 
+//--> herb list: rename res.render('index.ejs', {<collectionName>: result})
+//--> confirmation page 
+
+// - POST —> form inside of index.ejs -> what inputs / request body information do I want to send to the database? 
+name 
+order
+
+// - PUT —> fetch call through main.js | what am I updating? what identifiers will I use to find that specific document?
+// --> send idenitifier information inside of fetch body. every property inside of JSON body request = req.body.<property> in server.js
+the customers order
+
+// - DELETE —> fetch call through main.js | what identifiers will I use to find that specific document?
+
+//Adding new properties to user (i.e. name, image, etc)
+1. app/models/user.js
+2. add new properties in there
+3. figure out what the data types (num, strings, arrays, etc)
+4. then go into passport and add i.e.newUser.local.email = email;
+5. then image will be availble to insert onto the page 
+

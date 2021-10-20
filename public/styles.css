@@ -1,0 +1,49 @@
+body{
+  margin: 0;
+  font-family: 'Spartan', Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 15px;
+  padding-top:80px;
+  background-color: rgb(241 238 235);
+}
+
+
+.banner{
+  background-color: rgb(241 238 235);
+}
+
+.bannerContent{
+  width: auto;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.signinContainer{
+  width: auto;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img{
+width: 50em;
+padding-bottom: 2em;
+}
+
+.btn{
+  background-color: rgb(91 110 62);
+  padding: 1em;
+  text-decoration: none;
+  color:white;
+  margin-top: 2em;
+}
+
+
+.hide{
+  display:none;
+}
