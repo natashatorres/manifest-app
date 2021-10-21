@@ -25,7 +25,13 @@
           <li class="message">
             <span><%= messages[i].date %></span>
             <span><%= messages[i].name %></span>
-            <span><%= messages[i].msg %></span>
+            <% 
+            let color = 'black'
+            if(messages[i].like){
+                color = 'rgb(91 110 62);'
+            } %>
+
+            <span style="color: <%= color%>"><%= messages[i].msg %></span>
             <span><%= messages[i].like %></span>
             <span class="hide"><%= messages[i]._id %></span>
             
