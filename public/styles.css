@@ -14,7 +14,7 @@ body{
 
 .bannerContent{
   width: auto;
-  margin: 0 auto;
+  margin-top: 10em;
   display: flex;
   align-items: center;
   justify-content: center;

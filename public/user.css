@@ -107,6 +107,8 @@ width: 50em;
   width: 15em;
   height:4em;
   border:1px solid rgb(91 110 62);
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
 }
 
 button{
@@ -126,4 +128,17 @@ button{
 
 .messages{
   padding-bottom: 2em;
+}
+
+.message{
+  text-transform: lowercase;
+  font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
+}
+.profilePic{
+  margin-top: 2em;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  width: 11em;
+  height:4em;
+  border:1px solid rgb(91 110 62);
 }

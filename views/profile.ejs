@@ -21,26 +21,27 @@
 
     <div>
       <div class="well">
-          <h3 id="profile"> Profile</h3>
+          <h3 id="profile"> Profile picture</h3>
             <form action="/imageUpload" method="POST" enctype="multipart/form-data">
               <% if(user.img.data){ %>
                 <img src="data:image/<%=user.img.contentType%>;base64,
                 <%=user.img.data.toString('base64')%>" class="profileImg">
               <% } %>
                   
-            <div>
-              <input type="file" id="image" name="image" value="" required>
+            <div class="uploadImg">
+
+              <input type="file" id="image" name="image" value="" class="profilePic" required>
             </div>
                   <button type="submit">UPLOAD</button>
             </form>
 
 
-              <% if (user.local.email) { %>
+              <!-- <% if (user.local.email) { %>
             <p>
               <strong>id</strong>: <%= user._id %><br>
               <strong>email</strong>: <%= user.local.email %><br>
               <strong>password</strong>: <%= user.local.password %>
-            </p>
+            </p> -->
 
       </div>
 
@@ -48,7 +49,7 @@
    <h2 id="deserve">things flow to me</h2>
       <% if (user.local.email) { %>
         <form action="/messages" method="POST">
-          <input type="month" placeholder="date" name="date" class="inputMan"  value="2021-10"required>
+          <input type="text" placeholder="Month" name="date" class="inputMan" required>
           <input type="text" value="<%= user.local.email %>" name="name" class="inputMan" required>
           <input type="text" placeholder="message" name="msg" class="inputMan" required>
           
