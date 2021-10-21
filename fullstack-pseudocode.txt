@@ -44,3 +44,66 @@ the customers order
 4. then go into passport and add i.e.newUser.local.email = email;
 5. then image will be availble to insert onto the page 
 
+//article https://www.geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/
+
+//how to add photos
+
+//npm install multer --save
+
+//variables to add
+  const multer = require('multer');
+
+  const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+  });
+  const fs = require('fs');
+  const path = require('path');
+  const upload = multer({ storage: storage });
+  const userSchema = require('./models/user')
+
+
+  //add to ejs
+
+     <form action="/imageUpload" method="POST" enctype="multipart/form-data">
+              <% if(user.img.data){ %>
+                <img src="data:image/<%=user.img.contentType%>;base64,
+                <%=user.img.data.toString('base64')%>" class="profileImg">
+              <% } %>
+                  
+            <div>
+              <input type="file" id="image" name="image" value="" required>
+            </div>
+                  <button type="submit">UPLOAD</button>
+            </form>
+
+//post method to add to database
+
+  app.post('/imageUpload', upload.single('image'), (req, res, next) => {
+    console.log('starting image upload')
+    var obj = {
+      name: req.body.name,
+      desc: req.body.desc,
+      img: {
+        data: fs.readFileSync(path.join(__dirname + '/../uploads/' + req.file.filename)),
+        contentType: 'image/png'
+      }
+    }
+    console.log(obj)
+    userSchema.findOneAndUpdate({
+      _id: req.user._id,
+    },
+      obj, (err, item) => {
+      if (err) {
+          console.log(err);
+      }
+      else {
+          console.log('Saved image to database')
+          res.redirect('/profile');
+      }
+  });
+ 
